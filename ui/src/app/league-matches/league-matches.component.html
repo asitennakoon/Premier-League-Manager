@@ -1,0 +1,80 @@
+<html>
+  <body>
+    <div class="page">
+      <nav class="page__menu menu">
+        <ul class="menu__list r-list">
+          <li class="menu__group">
+            <a [routerLink]="['']" class="menu__link r-link text-underlined"
+              >Home</a
+            >
+          </li>
+          <li class="menu__group">
+            <a
+              [routerLink]="['/league-table']"
+              class="menu__link r-link text-underlined"
+              >Standings</a
+            >
+          </li>
+          <li class="menu__group">
+            <a
+              [routerLink]="['/match-results']"
+              class="menu__link r-link text-underlined"
+              >Matches</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container1">
+      <h2>Premier League Results <small>2020-21</small></h2>
+      <div class="center">
+        <button class="fancy" (click)="generatedMatch()">
+          <span class="top-key"></span>
+          <a target="_blank" class="">Generate Match</a>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </button>
+      </div>
+      <div class="container__item">
+        <form class="form">
+          <input #search type="date" class="form__field" />
+          <button
+            (click)="searchedMatch(search.value)"
+            type="button"
+            class="btn btn--primary btn--inside uppercase"
+          >
+            Search
+          </button>
+          <button
+            (click)="allMatches()"
+            type="button"
+            class="btn btn--primary btn--inside uppercase"
+            id="resetButton"
+          >
+            Reset
+          </button>
+        </form>
+      </div>
+      <ul class="match-table">
+        <li class="table-row" *ngFor="let match of matches">
+          <div class="col mcol-1" data-label="Home Team">
+            {{ match.homeTeam.name }}
+          </div>
+          <div class="col mcol-2" data-label="Home Goals">
+            {{ match.homeGoals }}
+          </div>
+          :
+          <div class="col mcol-3" data-label="Away Goals">
+            {{ match.awayGoals }}
+          </div>
+          <div class="col mcol-4" data-label="Away Team">
+            {{ match.awayTeam.name }}
+          </div>
+          <div class="col mcol-5" data-label="Date">
+            ({{ match.date | date: "dd/MM/yyyy" }})
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

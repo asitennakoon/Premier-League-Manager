@@ -1,0 +1,69 @@
+<html>
+  <body>
+    <div class="page">
+      <nav class="page__menu menu">
+        <ul class="menu__list r-list">
+          <li class="menu__group">
+            <a [routerLink]="['']" class="menu__link r-link text-underlined"
+              >Home</a
+            >
+          </li>
+          <li class="menu__group">
+            <a
+              [routerLink]="['/league-table']"
+              class="menu__link r-link text-underlined"
+              >Standings</a
+            >
+          </li>
+          <li class="menu__group">
+            <a
+              [routerLink]="['/match-results']"
+              class="menu__link r-link text-underlined"
+              >Matches</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+      <h2>Premier League Table <small>2020-21</small></h2>
+      <div class="sort">
+        <button (click)="clubsByPoints()">Sort by Points</button>
+        <button (click)="clubsByGoals()">Sort by Goals</button>
+        <button (click)="clubsByWins()">Sort by Wins</button>
+      </div>
+      <ul class="league-table">
+        <li class="table-header">
+          <div class="col col-1">Rank</div>
+          <div class="col col-2">Club</div>
+          <div class="col col-3">Points</div>
+          <div class="col col-4">Wins</div>
+          <div class="col col-5">Losses</div>
+          <div class="col col-6">Draws</div>
+          <div class="col col-7">Goals Scored</div>
+          <div class="col col-8">Goals Received</div>
+          <div class="col col-9">Matches Played</div>
+        </li>
+        <li class="table-row" *ngFor="let club of clubs; let i = index">
+          <div class="col col-1" data-label="Rank">{{ i + 1 }}</div>
+          <div class="col col-2" data-label="Club Name">
+            {{ club.name }}
+          </div>
+          <div class="col col-3" data-label="Points">{{ club.points }}</div>
+          <div class="col col-4" data-label="Wins">{{ club.wins }}</div>
+          <div class="col col-5" data-label="Losses">{{ club.losses }}</div>
+          <div class="col col-6" data-label="Draws">{{ club.draws }}</div>
+          <div class="col col-7" data-label="Goals Scored">
+            {{ club.goalsScored }}
+          </div>
+          <div class="col col-8" data-label="Goals Received">
+            {{ club.goalsReceived }}
+          </div>
+          <div class="col col-9" data-label="Matches Played">
+            {{ club.matchesPlayed }}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
